@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Doçura Brasil</title>
+
+  <style>
+
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff8f0;
+      color: #4b2920;
+    }
+
+
+    /* =========================
+       CABEÇALHO
+    ========================= */
+
+    header {
+      background: #fff;
+
+      padding: 18px 8%;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      border-bottom: 1px solid #f0ddd2;
+
+      position: sticky;
+      top: 0;
+
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d94f68;
+    }
+
+    nav a {
+      margin-left: 18px;
+
+      text-decoration: none;
+
+      color: #4b2920;
+
+      font-size: 14px;
+
+      transition: .2s;
+    }
+
+    nav a:hover {
+      color: #d94f68;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      max-width: 1100px;
+
+      margin: auto;
+
+      padding: 70px 8%;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 40px;
+
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+
+      line-height: 1.1;
+
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: #d94f68;
+    }
+
+    .hero p {
+      color: #765b50;
+
+      margin-bottom: 25px;
+
+      line-height: 1.6;
+    }
+
+    .hero img {
+      width: 100%;
+
+      height: 380px;
+
+      object-fit: cover;
+
+      border-radius: 20px;
+    }
+
+
+    /* =========================
+       BOTÕES
+    ========================= */
+
+    .btn {
+      display: inline-block;
+
+      background: #d94f68;
+
+      color: white;
+
+      padding: 12px 20px;
+
+      border-radius: 8px;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+      border: none;
+
+      cursor: pointer;
+
+      transition: .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+
+      opacity: .9;
+    }
+
+    .whatsapp {
+      background: #25d366;
+    }
+
+
+    /* =========================
+       SEÇÕES
+    ========================= */
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .titulo {
+      text-align: center;
+
+      margin-bottom: 35px;
+    }
+
+    .titulo h2 {
+      font-size: 32px;
+
+      margin-bottom: 8px;
+    }
+
+    .titulo p {
+      color: #765b50;
+    }
+
+
+    /* =========================
+       PRODUTOS
+    ========================= */
+
+    .produtos {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+
+      border-radius: 15px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 8px 25px rgba(80, 40, 20, .1);
+
+      cursor: pointer;
+
+      transition:
+        transform .2s,
+        box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+
+      box-shadow:
+        0 14px 30px rgba(80, 40, 20, .18);
+    }
+
+    .card img {
+      width: 100%;
+
+      height: 200px;
+
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #765b50;
+
+      font-size: 14px;
+
+      margin-bottom: 15px;
+
+      line-height: 1.5;
+    }
+
+    .preco {
+      color: #d94f68;
+
+      font-weight: bold;
+
+      font-size: 18px;
+
+      display: block;
+    }
+
+    .ver-produto {
+      display: block;
+
+      margin-top: 12px;
+
+      color: #7657a8;
+
+      font-size: 14px;
+
+      font-weight: bold;
+    }
+
+
+    /* =========================
+       CONTATO
+    ========================= */
+
+    .contato {
+      background: #4b2920;
+
+      color: white;
+
+      text-align: center;
+    }
+
+    .contato p {
+      margin: 15px 0 25px;
+
+      color: #eadbd5;
+    }
+
+
+    /* =========================
+       RODAPÉ
+    ========================= */
+
+    footer {
+      background: #321b15;
+
+      color: #ddd;
+
+      text-align: center;
+
+      padding: 20px;
+
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       JANELA DOS PRODUTOS
+    ========================= */
+
+    .produto-modal {
+      display: none;
+
+      position: fixed;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      background:
+        rgba(50, 27, 21, .78);
+
+      z-index: 99999;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+    }
+
+    .produto-box {
+      position: relative;
+
+      background: white;
+
+      width: 100%;
+
+      max-width: 850px;
+
+      max-height: 90vh;
+
+      overflow: hidden;
+
+      border-radius: 20px;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      box-shadow:
+        0 20px 60px rgba(0,0,0,.35);
+
+      animation:
+        abrirProduto .25s ease;
+    }
+
+    @keyframes abrirProduto {
+
+      from {
+        transform: scale(.9);
+
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+
+        opacity: 1;
+      }
+
+    }
+
+    .produto-box img {
+      width: 100%;
+
+      height: 100%;
+
+      min-height: 400px;
+
+      object-fit: cover;
+    }
+
+    .produto-info {
+      padding: 40px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+    .produto-info h2 {
+      font-size: 32px;
+
+      margin-bottom: 18px;
+    }
+
+    .produto-info p {
+      color: #765b50;
+
+      line-height: 1.7;
+
+      margin-bottom: 20px;
+    }
+
+    .produto-preco {
+      color: #d94f68;
+
+      font-size: 25px;
+
+      font-weight: bold;
+
+      margin-bottom: 25px;
+    }
+
+    .fechar-produto {
+      position: absolute;
+
+      top: 12px;
+
+      right: 15px;
+
+      width: 42px;
+
+      height: 42px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: white;
+
+      color: #4b2920;
+
+      font-size: 30px;
+
+      cursor: pointer;
+
+      z-index: 5;
+
+      box-shadow:
+        0 2px 10px rgba(0,0,0,.2);
+    }
+
+    .fechar-produto:hover {
+      background: #d94f68;
+
+      color: white;
+    }
+
+
+    /* =========================
+       ACESSIBILIDADE
+    ========================= */
+
+    .acessibilidade-btn {
+      position: fixed;
+
+      left: 20px;
+
+      bottom: 20px;
+
+      width: 55px;
+
+      height: 55px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: #7657a8;
+
+      color: white;
+
+      font-size: 25px;
+
+      cursor: pointer;
+
+      z-index: 9999;
+
+      box-shadow:
+        0 4px 15px rgba(0,0,0,.25);
+    }
+
+    .acessibilidade {
+      display: none;
+
+      position: fixed;
+
+      left: 20px;
+
+      bottom: 85px;
+
+      width: 230px;
+
+      padding: 18px;
+
+      background: white;
+
+      border-radius: 12px;
+
+      box-shadow:
+        0 5px 25px rgba(0,0,0,.25);
+
+      z-index: 9998;
+    }
+
+    .acessibilidade h3 {
+      margin-bottom: 12px;
+
+      color: #7657a8;
+    }
+
+    .acessibilidade button {
+      width: 100%;
+
+      padding: 10px;
+
+      margin-top: 7px;
+
+      border: none;
+
+      border-radius: 7px;
+
+      background: #eee7f7;
+
+      color: #40344d;
+
+      cursor: pointer;
+    }
+
+    .acessibilidade button:hover {
+      background: #ddd0ed;
+    }
+
+
+    /* =========================
+       MODO CALMO
+    ========================= */
+
+    body.modo-calmo * {
+      animation: none !important;
+
+      transition: none !important;
+    }
+
+    body.modo-calmo {
+      background: #f4f1eb;
+    }
+
+    body.modo-calmo .hero,
+    body.modo-calmo section {
+      background: #f4f1eb;
+    }
+
+    body.modo-calmo .hero img,
+    body.modo-calmo .card img {
+      filter: saturate(.65);
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 750px) {
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+
+        padding-top: 45px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero img {
+        height: 280px;
+      }
+
+      .produtos {
+        grid-template-columns: 1fr;
+      }
+
+      .produto-box {
+        grid-template-columns: 1fr;
+
+        max-height: 90vh;
+
+        overflow-y: auto;
+      }
+
+      .produto-box img {
+        height: 240px;
+
+        min-height: 240px;
+      }
+
+      .produto-info {
+        padding: 25px;
+      }
+
+      .produto-info h2 {
+        font-size: 26px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       CABEÇALHO
+  ========================= -->
+
+  <header>
+
+    <div class="logo">
+      🍬 Doçura Brasil
+    </div>
+
+    <nav>
+
+      <a href="#inicio">
+        Início
+      </a>
+
+      <a href="#doces">
+        Doces
+      </a>
+
+      <a href="#contato">
+        Contato
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =========================
+       INÍCIO
+  ========================= -->
+
+  <section class="hero" id="inicio">
+
+    <div>
+
+      <h1>
+        O sabor do
+        <span>Brasil</span>
+        em cada doce.
+      </h1>
+
+      <p>
+        Brigadeiros, beijinhos e deliciosos doces
+        brasileiros feitos com carinho para deixar
+        seu dia mais especial.
+      </p>
+
+      <a href="#doces" class="btn">
+        Ver doces
+      </a>
+
+    </div>
+
+
+    <img
+      src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
+      alt="Doces brasileiros"
+    >
+
+  </section>
+
+
+  <!-- =========================
+       PRODUTOS
+  ========================= -->
+
+  <section id="doces">
+
+    <div class="titulo">
+
+      <h2>
+        Nossos doces
+      </h2>
+
+      <p>
+        Clique em um produto para ver sua descrição!
+      </p>
+
+    </div>
+
+
+    <div class="produtos">
+
+
+      <!-- BRIGADEIRO -->
+
+      <div
+        class="card"
+        onclick="abrirProduto('brigadeiro')"
+        tabindex="0"
+        role="button"
+        aria-label="Ver detalhes do Brigadeiro"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1575377427642-087cf684f29d?auto=format&fit=crop&w=700&q=80"
+          alt="Brigadeiro"
+        >
+
+        <div class="card-content">
+
+          <h3>
+            🍫 Brigadeiro
+          </h3>
+
+          <p>
+            Chocolate cremoso com granulado.
+          </p>
+
+          <span class="preco">
+            R$ 3,50
+          </span>
+
+          <span class="ver-produto">
+            Ver descrição →
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- BEIJINHO -->
+
+      <div
+        class="card"
+        onclick="abrirProduto('beijinho')"
+        tabindex="0"
+        role="button"
+        aria-label="Ver detalhes do Beijinho"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=700&q=80"
+          alt="Beijinho"
+        >
+
+        <div class="card-content">
+
+          <h3>
+            🥥 Beijinho
+          </h3>
+
+          <p>
+            Delicioso doce de coco artesanal.
+          </p>
+
+          <span class="preco">
+            R$ 3,50
+          </span>
+
+          <span class="ver-produto">
+            Ver descrição →
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- GOURMET -->
+
+      <div
+        class="card"
+        onclick="abrirProduto('gourmet')"
+        tabindex="0"
+        role="button"
+        aria-label="Ver detalhes do Brigadeiro Gourmet"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80"
+          alt="Brigadeiro gourmet"
+        >
+
+        <div class="card-content">
+
+          <h3>
+            🍫 Gourmet
+          </h3>
+
+          <p>
+            Chocolate especial e super cremoso.
+          </p>
+
+          <span class="preco">
+            R$ 5,00
+          </span>
+
+          <span class="ver-produto">
+            Ver descrição →
+          </span>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       JANELA DE DESCRIÇÃO
+  ========================= -->
+
+  <div
+    class="produto-modal"
+    id="produtoModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="produtoNome"
+  >
+
+    <div class="produto-box">
+
+
+      <button
+        class="fechar-produto"
+        onclick="fecharProduto()"
+        aria-label="Fechar descrição"
+      >
+        ×
+      </button>
+
+
+      <img
+        id="produtoImagem"
+        src=""
+        alt=""
+      >
+
+
+      <div class="produto-info">
+
+        <h2 id="produtoNome">
+        </h2>
+
+        <p id="produtoDescricao">
+        </p>
+
+        <span
+          class="produto-preco"
+          id="produtoPreco"
+        >
+        </span>
+
+
+        <a
+          class="btn whatsapp"
+          href="https://wa.me/5500000000000"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Pedir pelo WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       CONTATO
+  ========================= -->
+
+  <section
+    class="contato"
+    id="contato"
+  >
+
+    <h2>
+      Faça seu pedido 💕
+    </h2>
+
+    <p>
+      Gostou dos nossos doces?
+      Entre em contato pelo WhatsApp!
+    </p>
+
+    <a
+      class="btn whatsapp"
+      href="https://wa.me/5500000000000"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Pedir pelo WhatsApp
+    </a>
+
+  </section>
+
+
+  <!-- =========================
+       RODAPÉ
+  ========================= -->
+
+  <footer>
+
+    © 2026 Doçura Brasil —
+    Feito com ❤️
+
+  </footer>
+
+
+  <!-- =========================
+       BOTÃO ACESSIBILIDADE
+  ========================= -->
+
+  <button
+    class="acessibilidade-btn"
+    onclick="abrirAcessibilidade()"
+    aria-label="Abrir opções de acessibilidade"
+  >
+    ♿
+  </button>
+
+
+  <div
+    class="acessibilidade"
+    id="acessibilidade"
+  >
+
+    <h3>
+      ♿ Acessibilidade
+    </h3>
+
+
+    <button onclick="modoCalmo()">
+      🌿 Modo calmo
+    </button>
+
+
+    <button onclick="aumentarTexto()">
+      🔠 Aumentar texto
+    </button>
+
+
+    <button onclick="diminuirTexto()">
+      🔡 Diminuir texto
+    </button>
+
+
+    <button onclick="leitura()">
+      🔊 Ler página
+    </button>
+
+
+    <button onclick="normalizar()">
+      ↩️ Restaurar
+    </button>
+
+  </div>
+
+
+  <!-- =========================
+       VLibras
+  ========================= -->
+
+  <div vw class="enabled">
+
+    <div vw-access-button class="active">
+    </div>
+
+    <div vw-plugin-wrapper>
+
+      <div class="vw-plugin-top-wrapper">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+
+  <script>
+
+    new window.VLibras.Widget({
+      rootPath: "https://vlibras.gov.br/app"
+    });
+
+
+    /* =========================
+       DADOS DOS PRODUTOS
+    ========================= */
+
+    const produtos = {
+
+      brigadeiro: {
+
+        nome: "🍫 Brigadeiro",
+
+        descricao:
+          "Nosso brigadeiro é feito artesanalmente com chocolate, leite condensado e muito carinho. É cremoso por dentro e finalizado com delicioso granulado de chocolate. Perfeito para festas, presentes ou para matar aquela vontade de comer um docinho.",
+
+        preco: "R$ 3,50",
+
+        imagem:
+          "https://images.unsplash.com/photo-1575377427642-087cf684f29d?auto=format&fit=crop&w=900&q=80"
+
+      },
+
+
+      beijinho: {
+
+        nome: "🥥 Beijinho",
+
+        descricao:
+          "Nosso beijinho é preparado artesanalmente com leite condensado e coco. Um doce macio, saboroso e delicado, perfeito para festas, comemorações ou para aproveitar aquele momento especial.",
+
+        preco: "R$ 3,50",
+
+        imagem:
+          "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80"
+
+      },
+
+
+      gourmet: {
+
+        nome: "🍫 Brigadeiro Gourmet",
+
+        descricao:
+          "Uma versão especial do nosso brigadeiro, preparada com chocolate de qualidade e ingredientes selecionados. Muito cremoso, intenso e com acabamento sofisticado.",
+
+        preco: "R$ 5,00",
+
+        imagem:
+          "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80"
+
+      }
+
+    };
+
+
+    /* =========================
+       ABRIR PRODUTO
+    ========================= */
+
+    function abrirProduto(produto) {
+
+      const dados = produtos[produto];
+
+      if (!dados) {
+        return;
+      }
+
+
+      document.getElementById("produtoNome").textContent =
+        dados.nome;
+
+
+      document.getElementById("produtoDescricao").textContent =
+        dados.descricao;
+
+
+      document.getElementById("produtoPreco").textContent =
+        dados.preco;
+
+
+      document.getElementById("produtoImagem").src =
+        dados.imagem;
+
+
+      document.getElementById("produtoImagem").alt =
+        dados.nome;
+
+
+      document.getElementById("produtoModal").style.display =
+        "flex";
+
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+    /* =========================
+       FECHAR PRODUTO
+    ========================= */
+
+    function fecharProduto() {
+
+      document.getElementById("produtoModal").style.display =
+        "none";
+
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+    /* =========================
+       FECHAR CLICANDO FORA
+    ========================= */
+
+    document.getElementById("produtoModal").addEventListener(
+      "click",
+      function(event) {
+
+        if (event.target === this) {
+
+          fecharProduto();
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       TECLA ESC
+    ========================= */
+
+    document.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (event.key === "Escape") {
+
+          fecharProduto();
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       ACESSIBILIDADE
+    ========================= */
+
+    function abrirAcessibilidade() {
+
+      const menu =
+        document.getElementById("acessibilidade");
+
+
+      if (menu.style.display === "block") {
+
+        menu.style.display =
+          "none";
+
+      } else {
+
+        menu.style.display =
+          "block";
+
+      }
+
+    }
+
+
+    function modoCalmo() {
+
+      document.body.classList.toggle(
+        "modo-calmo"
+      );
+
+    }
+
+
+    function aumentarTexto() {
+
+      document.body.style.fontSize =
+        "18px";
+
+    }
+
+
+    function diminuirTexto() {
+
+      document.body.style.fontSize =
+        "14px";
+
+    }
+
+
+    function normalizar() {
+
+      document.body.style.fontSize =
+        "";
+
+      document.body.classList.remove(
+        "modo-calmo"
+      );
+
+    }
+
+
+    /* =========================
+       LEITOR DE TEXTO
+    ========================= */
+
+    function leitura() {
+
+      const texto =
+        document.body.innerText;
+
+
+      if ("speechSynthesis" in window) {
+
+        window.speechSynthesis.cancel();
+
+
+        const fala =
+          new SpeechSynthesisUtterance(
+            texto
+          );
+
+
+        fala.lang =
+          "pt-BR";
+
+
+        fala.rate =
+          0.85;
+
+
+        window.speechSynthesis.speak(
+          fala
+        );
+
+      } else {
+
+        alert(
+          "Seu navegador não possui suporte à leitura de texto."
+        );
+
+      }
+
+    }
+
+
+    /* =========================
+       ACESSIBILIDADE DO TECLADO
+    ========================= */
+
+    document.querySelectorAll(".card").forEach(function(card) {
+
+      card.addEventListener(
+        "keydown",
+        function(event) {
+
+          if (
+            event.key === "Enter" ||
+            event.key === " "
+          ) {
+
+            event.preventDefault();
+
+            card.click();
+
+          }
+
+        }
+      );
+
+    });
+
+
+    console.log(
+      "Doçura Brasil carregado com sucesso!"
+    );
+
+  </script>
+
+
+</body>
+
+</html>
